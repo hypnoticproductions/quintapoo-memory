@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, articles, InsertArticle, processedContent, InsertProcessedContent } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,61 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Article Management
+export async function createArticle(article: InsertArticle) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.insert(articles).values(article);
+}
+
+export async function getUnsentArticles() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return await db
+    .select()
+    .from(articles)
+    .where(isNull(articles.sentToBase44))
+    .orderBy(desc(articles.createdAt));
+}
+
+export async function markArticleAsSent(taskId: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db
+    .update(articles)
+    .set({ sentToBase44: new Date() })
+    .where(eq(articles.taskId, taskId));
+}
+
+export async function getAllArticles(limit = 50) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return await db
+    .select()
+    .from(articles)
+    .orderBy(desc(articles.createdAt))
+    .limit(limit);
+}
+
+// Processed Content Management
+export async function saveProcessedContent(content: InsertProcessedContent) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  await db.insert(processedContent).values(content);
+}
+
+export async function getProcessedContent(limit = 50) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return await db
+    .select()
+    .from(processedContent)
+    .orderBy(desc(processedContent.receivedAt))
+    .limit(limit);
+}

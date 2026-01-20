@@ -36,3 +36,38 @@ export const webhookLogs = mysqlTable("webhook_logs", {
 
 export type WebhookLog = typeof webhookLogs.$inferSelect;
 export type InsertWebhookLog = typeof webhookLogs.$inferInsert;
+
+// Articles Table for tracking content to send to Base 44
+export const articles = mysqlTable("articles", {
+  id: int("id").autoincrement().primaryKey(),
+  taskId: varchar("task_id", { length: 128 }).notNull().unique(),
+  title: varchar("title", { length: 512 }).notNull(),
+  content: text("content").notNull(),
+  attachmentUrl: varchar("attachment_url", { length: 1024 }),
+  sentToBase44: timestamp("sent_to_base44"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type Article = typeof articles.$inferSelect;
+export type InsertArticle = typeof articles.$inferInsert;
+
+// Processed Content Table for storing Base 44 enriched content
+export const processedContent = mysqlTable("processed_content", {
+  id: int("id").autoincrement().primaryKey(),
+  externalContentId: varchar("external_content_id", { length: 128 }).notNull().unique(),
+  tension: varchar("tension", { length: 256 }),
+  mood: varchar("mood", { length: 128 }),
+  angle: varchar("angle", { length: 128 }),
+  songId: varchar("song_id", { length: 128 }),
+  songTitle: varchar("song_title", { length: 512 }),
+  songArtist: varchar("song_artist", { length: 256 }),
+  songSpotifyUrl: varchar("song_spotify_url", { length: 1024 }),
+  songGenre: varchar("song_genre", { length: 128 }),
+  songThemes: text("song_themes"), // JSON array stored as text
+  articleTitle: varchar("article_title", { length: 512 }).notNull(),
+  articleBody: text("article_body").notNull(),
+  receivedAt: timestamp("received_at").defaultNow().notNull(),
+});
+
+export type ProcessedContent = typeof processedContent.$inferSelect;
+export type InsertProcessedContent = typeof processedContent.$inferInsert;

@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, FileText, Globe, Lock, Server, Terminal, Zap } from "lucide-react";
+import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, FileText, Globe, Lock, Server, Terminal, Zap, Radio } from "lucide-react";
+import { Base44ControlPanel } from "@/components/Base44ControlPanel";
 
 export default function Home() {
 
@@ -91,8 +92,9 @@ export default function Home() {
           {/* Left Column: Mission Control */}
           <div className="lg:col-span-2 space-y-6">
             <Tabs defaultValue="status" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-muted/50 p-1">
+              <TabsList className="grid w-full grid-cols-4 bg-muted/50 p-1">
                 <TabsTrigger value="status" className="data-[state=active]:bg-background data-[state=active]:text-primary">LIVE STATUS</TabsTrigger>
+                <TabsTrigger value="base44" className="data-[state=active]:bg-background data-[state=active]:text-primary">BASE 44</TabsTrigger>
                 <TabsTrigger value="tasks" className="data-[state=active]:bg-background data-[state=active]:text-primary">TASK QUEUE</TabsTrigger>
                 <TabsTrigger value="logs" className="data-[state=active]:bg-background data-[state=active]:text-primary">SYSTEM LOGS</TabsTrigger>
               </TabsList>
@@ -184,6 +186,10 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
+              </TabsContent>
+
+              <TabsContent value="base44" className="mt-4">
+                <Base44ControlPanel />
               </TabsContent>
 
               <TabsContent value="tasks" className="mt-4">

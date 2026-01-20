@@ -15,6 +15,13 @@
       "when": 1768946473560,
       "tag": "0001_deep_morph",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1768950480861,
+      "tag": "0002_greedy_fat_cobra",
+      "breakpoints": true
     }
   ]
 }
