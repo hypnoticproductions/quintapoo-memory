@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, FileText, Globe, Lock, Server, Terminal, Zap } from "lucide-react";
 
 export default function Home() {
+
   return (
     <div className="min-h-screen bg-background text-foreground font-mono selection:bg-primary selection:text-primary-foreground">
       {/* Top Status Bar */}
