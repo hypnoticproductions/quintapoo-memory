@@ -8,7 +8,7 @@
 - [x] Create webhook monitoring panel on dashboard
 - [x] Implement daily automation schedule for article dispatch (6 AM AST daily)
 - [x] Test complete bidirectional flow (7/7 tests passing)
-- [ ] Save checkpoint after integration complete
+- [x] Save checkpoint after integration complete (v df110c33)
 
 ## Completed
 - [x] Upgrade to Full Stack architecture (web-db-user)
