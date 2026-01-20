@@ -262,25 +262,55 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Terminal className="h-5 w-5" />
-                  System Files
+                  System Files (Hard-Coded)
                 </CardTitle>
+                <CardDescription>Direct download from repository</CardDescription>
               </CardHeader>
               <CardContent className="space-y-2 text-sm font-mono">
-                <div className="flex items-center gap-2 p-2 hover:bg-muted/50 cursor-pointer">
-                  <FileText className="h-4 w-4 text-muted-foreground" />
-                  <span>morphic_auto_publisher.py</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 hover:bg-muted/50 cursor-pointer">
-                  <FileText className="h-4 w-4 text-muted-foreground" />
-                  <span>network_activation_log.md</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 hover:bg-muted/50 cursor-pointer">
-                  <FileText className="h-4 w-4 text-muted-foreground" />
-                  <span>rss_master_config.md</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 hover:bg-muted/50 cursor-pointer">
-                  <FileText className="h-4 w-4 text-muted-foreground" />
-                  <span>CONTINUITY_HANDOFF.md</span>
+                <a href="/assets/morphic_auto_publisher.py" download className="flex items-center justify-between p-2 border border-border hover:bg-primary/10 hover:border-primary transition-colors group">
+                  <div className="flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                    <span className="group-hover:text-primary">morphic_auto_publisher.py</span>
+                  </div>
+                  <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 text-primary" />
+                </a>
+                <a href="/assets/CONTINUITY_HANDOFF.md" download className="flex items-center justify-between p-2 border border-border hover:bg-primary/10 hover:border-primary transition-colors group">
+                  <div className="flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                    <span className="group-hover:text-primary">CONTINUITY_HANDOFF.md</span>
+                  </div>
+                  <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 text-primary" />
+                </a>
+                <a href="/assets/network_activation_log.md" download className="flex items-center justify-between p-2 border border-border hover:bg-primary/10 hover:border-primary transition-colors group">
+                  <div className="flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                    <span className="group-hover:text-primary">network_activation_log.md</span>
+                  </div>
+                  <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 text-primary" />
+                </a>
+                <a href="/assets/rss_master_config.md" download className="flex items-center justify-between p-2 border border-border hover:bg-primary/10 hover:border-primary transition-colors group">
+                  <div className="flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                    <span className="group-hover:text-primary">rss_master_config.md</span>
+                  </div>
+                  <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 text-primary" />
+                </a>
+                <div className="pt-2">
+                  <h4 className="text-xs font-bold text-muted-foreground uppercase mb-2">Core Protocols</h4>
+                  <a href="/assets/QUINTAPOOTHEDOMINATOR.txt" download className="flex items-center justify-between p-2 border border-border hover:bg-amber-500/10 hover:border-amber-500 transition-colors group">
+                    <div className="flex items-center gap-2">
+                      <Lock className="h-4 w-4 text-amber-500" />
+                      <span className="group-hover:text-amber-500">QUINTAPOOTHEDOMINATOR.txt</span>
+                    </div>
+                    <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 text-amber-500" />
+                  </a>
+                  <a href="/assets/DIAGRAM_3_FREQUENCY_REVIEW.md" download className="flex items-center justify-between p-2 border border-border hover:bg-primary/10 hover:border-primary transition-colors group mt-2">
+                    <div className="flex items-center gap-2">
+                      <FileText className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                      <span className="group-hover:text-primary">DIAGRAM_3_FREQUENCY.md</span>
+                    </div>
+                    <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 text-primary" />
+                  </a>
                 </div>
               </CardContent>
             </Card>
