@@ -100,29 +100,160 @@
 
 ---
 
-## AGRICULTURE, TOURISM, BEVERAGES, HEALTH/HAIR CARE
-### Status: Research pending
+## AGRICULTURE & EXPORT
 
-**Agriculture Export:**
-- Coffee exporters (Jamaica Blue Mountain, Uganda)
-- Cocoa producers (Trinidad, Grenada)
-- Spice exporters (Grenada nutmeg, St. Lucia cinnamon)
-- Tropical fruit exporters (Mango, papaya, passion fruit)
+### **Carib-Export** (Caribbean Export Development Agency)
+- **Sector:** Trade Facilitation / Export Support
+- **Description:** Connects Caribbean firms with European buyers, distributors, investors
+- **Event:** 2025-2026 Caribbean Export Trade Mission to Europe
+- **Website:** https://carib-export.com/
+- **Contact:** [Extract from website]
 
-**Tourism:**
-- Boutique hotels (St. Lucia, Barbados, Jamaica)
-- Tour operators (adventure tourism, cultural tours)
-- Experience providers (rum tours, cooking classes, diving)
+### **Food Export Association of the Midwest USA & Food Export USA-Northeast**
+- **Sector:** Food Export / Trade Mission
+- **Event:** 2026 Caribbean & Latin America Buyers' Mission (Miami)
+- **Website:** https://www.foodexport.org/
+- **Contact:** [Extract from website]
 
-**Alcohols, Wines, Beverages:**
-- Rum distilleries (Appleton Estate, Mount Gay, Chairman's Reserve)
-- Craft breweries (Caribbean craft beer movement)
-- Local beverage brands (sorrel, ginger beer, coconut water)
+### **Identec Solutions** (Cold Chain Innovation)
+- **Sector:** Export Logistics / Cold Chain
+- **Products:** Tropical fruits, seafood export solutions
+- **Website:** https://www.identecsolutions.com/
+- **Contact:** [Extract from website]
 
-**Naturopathic Health & Hair Care:**
-- Natural remedy producers (bush teas, herbal supplements)
-- Hair care product lines (natural oils, shampoos, conditioners)
-- Salons specializing in natural hair care
+### **Agritecture** (Controlled Environment Agriculture)
+- **Sector:** Agriculture Technology / Food Security
+- **Description:** CEA designs, strategy, feasibility studies for Caribbean food security
+- **Website:** https://www.agritecture.com/
+- **Contact:** [Extract from website]
+
+---
+
+## ALCOHOLS, WINES, BEVERAGES
+
+### **Bumbu Rum Company** (Barbados)
+- **Sector:** Rum Distillery
+- **Description:** Flagship product distilled and blended in Barbados, birthplace of rum (400-year heritage)
+- **Website:** https://bumbu.sovereignbrands.com/
+- **Contact:** [Extract from website]
+
+### **Florida Caribbean Distillers**
+- **Sector:** Distilled Spirits / Wine Beverage Company
+- **Services:** Full-service creation and production of alcohol and non-alcoholic beverages
+- **Website:** https://www.floridadistillers.com/
+- **Contact:** [Extract from website]
+
+### **Crab Island Rum Distillery** (Vieques, Puerto Rico)
+- **Sector:** Craft Rum Distillery
+- **Description:** First handcrafted rum distillery on Vieques, PR. Two outdoor bars + kitchen
+- **Website:** https://crabislandrum.com/
+- **Contact:** [Extract from website]
+
+### **Caribbean Rum Distilleries & Brands** (Directory)
+- **Sector:** Rum Industry Resource
+- **Description:** Comprehensive directory of major Caribbean rum distilleries and brands
+- **Website:** https://cocktailwonk.com/rum-distilleries-and-brands
+- **Contact:** [Extract from website]
+
+---
+
+## TOURISM
+
+### **Caribbean Travel and Tours**
+- **Sector:** Travel Marketplace
+- **Description:** First dedicated marketplace for Caribbean travel experiences, curated multi-destination tours
+- **Website:** https://caribbeantravelandtours.com/
+- **Contact:** [Extract from website]
+
+### **Craft Travel**
+- **Sector:** Luxury Travel Designer
+- **Services:** High-end resorts, private islands, luxury villas across Caribbean
+- **Website:** https://www.crafttravel.com/caribbean
+- **Contact:** [Extract from website]
+
+### **Expressionz Travels**
+- **Sector:** Travel Agency
+- **Services:** Extraordinary travel experiences, secluded island getaways, lavish experiences
+- **Website:** https://expressionztravels.com/
+- **Contact:** [Extract from website]
+
+### **Haygem Tours & Travel LTD** (Trinidad)
+- **Sector:** IATA Travel Agency
+- **Founded:** 1991
+- **Services:** Barbados hotels & rates, Caribbean travel packages
+- **Website:** https://www.haygem.com/
+- **Contact:** [Extract from website]
+
+---
+
+## NATURAL HAIR CARE
+
+### **Tropic Isle Living** (Jamaica)
+- **Sector:** Natural Hair Care Products
+- **Description:** All-natural Jamaican-sourced products for men and women, hair growth focus
+- **Products:** Jamaican Black Castor Oil, hair treatments
+- **Website:** [Need to extract]
+- **Source:** Caribbean Posh article
+- **Contact:** [Extract from website]
+
+### **Caribbean Beauty Products**
+- **Sector:** Natural Hair Care
+- **Description:** Organic ingredients and natural essential oils, salon-quality results
+- **Website:** https://www.caribbeanbeautyproducts.com/healthy-hair-care
+- **Contact:** [Extract from website]
+
+### **Caribshopper** (Hair Care Marketplace)
+- **Sector:** Caribbean Product Marketplace
+- **Products:** All-natural, iconically Caribbean formulas for black hair
+- **Website:** https://caribshopper.com/collections/haircare
+- **Contact:** [Extract from website]
+
+### **Taliah Waajid Brand**
+- **Sector:** Natural Hair Care
+- **Description:** Sustainable natural hair products with nature-inspired ingredients for all hair types
+- **Website:** https://naturalhair.org/
+- **Contact:** [Extract from website]
+
+### **Noun Naturals**
+- **Sector:** Certified Clean Personal Care
+- **Products:** Natural hair, beard, and body care
+- **Website:** https://nounnaturals.com/
+- **Contact:** [Extract from website]
+
+### **Nylah's Naturals**
+- **Sector:** Natural Hair Care
+- **Description:** Award-winning all-natural hair care products for afro-textured hair
+- **Website:** https://www.nylahsnaturals.com/
+- **Contact:** [Extract from website]
+
+---
+
+## NATUROPATHIC HEALTH & HERBAL PRODUCTS
+
+### **Caribbean Bush Tea**
+- **Sector:** Herbal Teas / Natural Health
+- **Products:** Sea Moss, Teas, Herbs, Body Butters, Detox/Weight Loss Tea
+- **Website:** https://caribbeanbushtea.com/
+- **Contact:** [Extract from website]
+
+### **Obara Jamaican Bush Tea** (via Caribshopper)
+- **Sector:** Organic Herbal Blends
+- **Products:** Sarsaparilla roots, dandelion leaf, moringa leaf, vervain, guava leaf
+- **Website:** https://caribshopper.com/products/obara-jamaican-bush-tea-organic-herbal-blend
+- **Contact:** [Extract from website]
+
+### **Caribbean Gold Fruit and Herbal Teas**
+- **Sector:** Premium Herbal Teas
+- **Products:** Seven original, natural blends
+- **Website:** https://www.caribbeangoldltd.com/
+- **Contact:** [Extract from website]
+
+### **The Organic Caribbean** (Dominican Republic)
+- **Sector:** Natural Cosmetics & Skincare
+- **Description:** Luxury natural beauty products with tropical fruits & plant extracts, ranked alongside Dior/Chanel/La Mer
+- **Locations:** Dominican Republic, USA
+- **Website:** http://theorganiccaribbean.com/ | https://theorganiccaribbean-usa.com/
+- **Contact:** [Extract from website]
 
 ---
 

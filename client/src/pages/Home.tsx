@@ -6,6 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, FileText, Globe, Lock, Server, Terminal, Zap, Radio } from "lucide-react";
 import { Base44ControlPanel } from "@/components/Base44ControlPanel";
+import NetworkMonitor from "@/components/NetworkMonitor";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -113,11 +114,12 @@ export default function Home() {
           {/* Left Column: Mission Control */}
           <div className="lg:col-span-2 space-y-6">
             <Tabs defaultValue="status" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 bg-muted/50 p-1">
+              <TabsList className="grid w-full grid-cols-5 bg-muted/50 p-1">
                 <TabsTrigger value="status" className="data-[state=active]:bg-background data-[state=active]:text-primary">LIVE STATUS</TabsTrigger>
                 <TabsTrigger value="base44" className="data-[state=active]:bg-background data-[state=active]:text-primary">BASE 44</TabsTrigger>
                 <TabsTrigger value="tasks" className="data-[state=active]:bg-background data-[state=active]:text-primary">TASK QUEUE</TabsTrigger>
                 <TabsTrigger value="logs" className="data-[state=active]:bg-background data-[state=active]:text-primary">SYSTEM LOGS</TabsTrigger>
+                <TabsTrigger value="network" className="data-[state=active]:bg-background data-[state=active]:text-primary">NETWORK</TabsTrigger>
               </TabsList>
               
               <TabsContent value="status" className="space-y-4 mt-4">
@@ -248,6 +250,10 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
+              </TabsContent>
+              
+              <TabsContent value="network" className="space-y-4 mt-4">
+                <NetworkMonitor />
               </TabsContent>
             </Tabs>
           </div>
