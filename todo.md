@@ -105,3 +105,20 @@
 4. Launch automated engagement workflow
 5. Send Wukr Wire newsletter to Phase 1 + Phase 2 contacts
 6. Monitor Base 44 for processed content responses
+
+## SUBSTACK COLLABORATION RESEARCH (WEDNESDAY JAN 21)
+- [x] Research Natia Kurdadze - find Substack, LinkedIn, Twitter, email
+- [x] Identify 10-15 similar Substack growth strategists/content creators
+- [x] Draft collaboration pitch tailored to Substack growth strategists
+- [x] Create outreach list with contact information
+- [ ] Add to CRM in Operational Hub
+- [ ] Complete warm-up phase (follow, engage, share) for Top 5 targets
+- [ ] Send initial outreach emails to Top 5 (Natia, Sean, Mario, Lenny, Noah)
+
+## EMAILER APP INTEGRATION (WEDNESDAY JAN 21)
+- [ ] Create `/newsletters` folder for Wukr Wire and other newsletter content
+- [ ] Create `/proposals` folder for business proposals and promotional documents
+- [ ] Create sample newsletter template (Markdown)
+- [ ] Create sample proposal template (Markdown)
+- [ ] Commit to GitHub and provide repository URLs for app developer
+- [ ] Document emailer workflow (segmentation, targeting, bulk send)
