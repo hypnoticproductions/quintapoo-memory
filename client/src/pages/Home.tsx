@@ -6,8 +6,21 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, FileText, Globe, Lock, Server, Terminal, Zap, Radio } from "lucide-react";
 import { Base44ControlPanel } from "@/components/Base44ControlPanel";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [dayOfWeek, setDayOfWeek] = useState("");
+
+  useEffect(() => {
+    // Update time every second
+    const timer = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now);
+      setDayOfWeek(now.toLocaleDateString('en-US', { weekday: 'long', timeZone: 'America/Puerto_Rico' }));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-mono selection:bg-primary selection:text-primary-foreground">
@@ -28,8 +41,16 @@ export default function Home() {
               <span className="text-amber-500 font-bold">NARRATIVE ESTABLISHMENT</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">LAST SYNC:</span>
-              <span>{new Date().toISOString().split('T')[0]}</span>
+              <span className="text-muted-foreground">DATE:</span>
+              <span>{currentTime.toLocaleDateString('en-US', { timeZone: 'America/Puerto_Rico' })}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">TIME:</span>
+              <span>{currentTime.toLocaleTimeString('en-US', { timeZone: 'America/Puerto_Rico', hour12: false })} AST</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground">DAY:</span>
+              <span className="font-bold">{dayOfWeek.toUpperCase()}</span>
             </div>
           </div>
         </div>
