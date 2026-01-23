@@ -122,3 +122,16 @@
 - [ ] Create sample proposal template (Markdown)
 - [ ] Commit to GitHub and provide repository URLs for app developer
 - [ ] Document emailer workflow (segmentation, targeting, bulk send)
+
+## SALLY WEBHOOK INTEGRATION (FRIDAY JAN 23)
+- [x] Add Sally environment variables (SALLY_WEBHOOK_URL, SALLY_WEBHOOK_SECRET, SALLY_WEBHOOK_ENABLED)
+- [x] Create webhook service (server/sally.ts) with HMAC-SHA256 signature
+- [x] Implement retry logic (exponential backoff: 1s, 2s, 4s, 8s)
+- [x] Add sally_client_id column to articles table
+- [x] Update webhookLogs schema for Sally support
+- [x] Create tRPC endpoints sally.sendTaskCreated and sally.sendTaskCompleted
+- [x] Test HMAC signature generation
+- [x] Test webhook delivery with sample payloads (6/6 tests passing)
+- [x] Test retry logic
+- [x] Run pnpm test (all tests passing)
+- [ ] Save checkpoint

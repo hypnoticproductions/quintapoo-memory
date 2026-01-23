@@ -5,8 +5,10 @@ import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { getDb } from "./db";
 import { webhookLogs } from "../drizzle/schema";
+import { eq, desc } from "drizzle-orm";
 import { sendArticleToBase44, sendArticleBatchToBase44 } from "./base44";
 import { saveProcessedContent, getProcessedContent, createArticle, getUnsentArticles, markArticleAsSent, getAllArticles } from "./db";
+import { sendTaskCreatedEvent, sendTaskCompletedEvent } from "./sally";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -188,6 +190,71 @@ export const appRouter = router({
       }))
       .query(async ({ input }) => {
         return await getProcessedContent(input.limit);
+      }),
+  }),
+
+  // Sally Webhook Integration
+  sally: router({    
+    // Manual webhook trigger for task.created event
+    sendTaskCreated: publicProcedure
+      .input(z.object({
+        taskId: z.string(),
+        clientId: z.string(),
+        metadata: z.object({
+          briefContent: z.string().optional(),
+          conversationScore: z.number().optional(),
+          paymentStatus: z.string().optional(),
+          priority: z.string().optional(),
+        }).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const result = await sendTaskCreatedEvent(
+          input.taskId,
+          input.clientId,
+          input.metadata || {}
+        );
+        return result;
+      }),
+    
+    // Manual webhook trigger for task.completed event
+    sendTaskCompleted: publicProcedure
+      .input(z.object({
+        taskId: z.string(),
+        clientId: z.string(),
+        metadata: z.object({
+          completionNotes: z.string().optional(),
+          outcome: z.string().optional(),
+          nextSteps: z.string().optional(),
+          contactMethod: z.string().optional(),
+          durationMinutes: z.number().optional(),
+        }).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const result = await sendTaskCompletedEvent(
+          input.taskId,
+          input.clientId,
+          input.metadata || {}
+        );
+        return result;
+      }),
+    
+    // Get Sally webhook logs
+    getLogs: publicProcedure
+      .input(z.object({
+        limit: z.number().default(50),
+      }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+        
+        const logs = await db
+          .select()
+          .from(webhookLogs)
+          .where(eq(webhookLogs.source, "sally"))
+          .orderBy(desc(webhookLogs.receivedAt))
+          .limit(input.limit);
+        
+        return logs;
       }),
   }),
 });

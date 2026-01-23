@@ -25,13 +25,18 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// Webhook Logs Table for Base 44 Engine Two
+// Webhook Logs Table for Base 44 Engine Two and Sally
 export const webhookLogs = mysqlTable("webhook_logs", {
   id: int("id").autoincrement().primaryKey(),
-  source: varchar("source", { length: 128 }).notNull(),
+  source: varchar("source", { length: 128 }).notNull(), // 'base44' or 'sally'
+  event: varchar("event", { length: 128 }), // e.g., 'task.created', 'task.completed'
   payload: text("payload").notNull(),
+  response: text("response"), // Response from webhook endpoint
   signature: varchar("signature", { length: 256 }),
+  statusCode: int("status_code"), // HTTP status code
+  success: int("success").notNull().default(0), // 1 = success, 0 = failure
   receivedAt: timestamp("receivedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
 export type WebhookLog = typeof webhookLogs.$inferSelect;
@@ -41,6 +46,7 @@ export type InsertWebhookLog = typeof webhookLogs.$inferInsert;
 export const articles = mysqlTable("articles", {
   id: int("id").autoincrement().primaryKey(),
   taskId: varchar("task_id", { length: 128 }).notNull().unique(),
+  sallyClientId: varchar("sally_client_id", { length: 128 }), // Sally client UUID
   title: varchar("title", { length: 512 }).notNull(),
   content: text("content").notNull(),
   attachmentUrl: varchar("attachment_url", { length: 1024 }),
