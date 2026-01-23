@@ -134,4 +134,14 @@
 - [x] Test webhook delivery with sample payloads (6/6 tests passing)
 - [x] Test retry logic
 - [x] Run pnpm test (all tests passing)
+- [x] Save checkpoint (version a48ce20a)
+
+## MANUS CHAT INBOUND WEBHOOK (FRIDAY JAN 23)
+- [x] Create inbound endpoint `/api/trpc/sally.inboundFromManus`
+- [x] Validate `X-Manus-Signature: contancybearsfruit` header
+- [x] Parse task.created and task.completed payloads
+- [x] Log inbound webhooks to database (source: manus_chat)
+- [x] Create test for inbound webhook validation (6/6 tests passing)
+- [x] Test with sample payloads
 - [ ] Save checkpoint
+- [ ] Provide webhook URL to user for Manus chat configuration

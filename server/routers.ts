@@ -256,6 +256,44 @@ export const appRouter = router({
         
         return logs;
       }),
+    
+    // Inbound webhook from Manus chat
+    inboundFromManus: publicProcedure
+      .input(z.object({
+        event: z.enum(["task.created", "task.completed"]),
+        task_id: z.string(),
+        client_id: z.string(),
+        timestamp: z.string(),
+        metadata: z.record(z.string(), z.any()).optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        // Validate X-Manus-Signature header
+        const signature = ctx.req.headers["x-manus-signature"];
+        const expectedSignature = "contancybearsfruit";
+        
+        if (signature !== expectedSignature) {
+          throw new Error("Invalid X-Manus-Signature header");
+        }
+        
+        // Log webhook to database
+        const db = await getDb();
+        if (db) {
+          await db.insert(webhookLogs).values({
+            source: "manus_chat",
+            event: input.event,
+            payload: JSON.stringify(input),
+            response: JSON.stringify({ success: true }),
+            statusCode: 200,
+            success: 1,
+            receivedAt: new Date(),
+            createdAt: new Date(),
+          });
+        }
+        
+        console.log(`[Manus Chat Webhook] ${input.event} received for task ${input.task_id}`);
+        
+        return { success: true, message: "Webhook received" };
+      }),
   }),
 });
 
