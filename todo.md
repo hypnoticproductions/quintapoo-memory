@@ -143,5 +143,12 @@
 - [x] Log inbound webhooks to database (source: manus_chat)
 - [x] Create test for inbound webhook validation (6/6 tests passing)
 - [x] Test with sample payloads
-- [ ] Save checkpoint
+- [x] Save checkpoint (version 578c89a3)
 - [ ] Provide webhook URL to user for Manus chat configuration
+
+## FRIDAY NEWSLETTER (JAN 23, 2026)
+- [x] Gather latest intelligence signals from this week (5 signals)
+- [x] Review article content and key insights (Caribbean citizenship article, ARM 0.91)
+- [x] Write Wukr Wire Friday newsletter (weekly recap format, 1,247 words)
+- [x] Save to /newsletters folder
+- [ ] Distribute to contact list (108 businesses)
