@@ -77,3 +77,67 @@ export const processedContent = mysqlTable("processed_content", {
 
 export type ProcessedContent = typeof processedContent.$inferSelect;
 export type InsertProcessedContent = typeof processedContent.$inferInsert;
+
+// Clients Table for Sally/Telnyx integration
+export const clients = mysqlTable("clients", {
+  id: varchar("id", { length: 128 }).primaryKey(), // UUID
+  name: varchar("name", { length: 256 }).notNull(),
+  company: varchar("company", { length: 256 }),
+  phone: varchar("phone", { length: 32 }).notNull().unique(),
+  email: varchar("email", { length: 320 }),
+  paymentStatus: mysqlEnum("payment_status", ["active", "trial", "expired"]).default("trial").notNull(),
+  trialEndDate: timestamp("trial_end_date"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Client = typeof clients.$inferSelect;
+export type InsertClient = typeof clients.$inferInsert;
+
+// Tasks Table for tracking Manus tasks linked to clients
+export const tasks = mysqlTable("tasks", {
+  id: int("id").autoincrement().primaryKey(),
+  manusTaskId: varchar("manus_task_id", { length: 128 }).notNull().unique(),
+  clientId: varchar("client_id", { length: 128 }).notNull(),
+  status: mysqlEnum("status", ["pending", "active", "in_progress", "completed", "cancelled"]).default("pending").notNull(),
+  progressPercentage: int("progress_percentage").default(0).notNull(),
+  currentPhase: varchar("current_phase", { length: 256 }),
+  nextPhase: varchar("next_phase", { length: 256 }),
+  estimatedCompletion: timestamp("estimated_completion"),
+  lastActivity: timestamp("last_activity").defaultNow().notNull(),
+  summary: text("summary"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Task = typeof tasks.$inferSelect;
+export type InsertTask = typeof tasks.$inferInsert;
+
+// Call Logs Table for recording Sally phone interactions
+export const callLogs = mysqlTable("call_logs", {
+  id: varchar("id", { length: 128 }).primaryKey(), // UUID
+  clientId: varchar("client_id", { length: 128 }),
+  phoneNumber: varchar("phone_number", { length: 32 }).notNull(),
+  callDurationSeconds: int("call_duration_seconds"),
+  callPurpose: mysqlEnum("call_purpose", ["status_check", "new_task", "support", "unknown"]).default("unknown").notNull(),
+  summary: text("summary").notNull(),
+  actionRequired: int("action_required").default(0).notNull(), // 1 = true, 0 = false
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type CallLog = typeof callLogs.$inferSelect;
+export type InsertCallLog = typeof callLogs.$inferInsert;
+
+// Client History Table for tracking interactions and briefs
+export const clientHistory = mysqlTable("client_history", {
+  id: int("id").autoincrement().primaryKey(),
+  clientId: varchar("client_id", { length: 128 }).notNull(),
+  interactionType: mysqlEnum("interaction_type", ["call", "brief_submission", "email", "other"]).notNull(),
+  summary: text("summary").notNull(),
+  keyPoints: text("key_points"), // JSON array stored as text
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type ClientHistory = typeof clientHistory.$inferSelect;
+export type InsertClientHistory = typeof clientHistory.$inferInsert;

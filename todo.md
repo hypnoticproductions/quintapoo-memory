@@ -165,8 +165,22 @@
 - [ ] Send article to Base 44
 
 ## BASE 44 RETRY + MONDAY NEWSLETTER (JAN 26)
-- [ ] Retry sending article to Base 44 (handle timeout)
-- [ ] Create Monday newsletter from today's article
-- [ ] Save newsletter to /newsletters folder
-- [ ] Commit to GitHub
-- [ ] Distribute newsletter to contact list
+- [ ] Retry sending article to Base 44 (endpoint timeout - pending)
+- [x] Create Monday newsletter from today's article
+- [x] Save newsletter to /newsletters folder
+- [x] Commit to GitHub (checkpoint 42cbcf91)
+- [ ] Distribute newsletter to contact list (108 businesses)
+
+## MCP SERVER FOR SALLY/TELNYX INTEGRATION (JAN 26)
+- [x] Create database schema (clients, tasks, call_logs, client_history tables)
+- [x] Build MCP server with 6 tools:
+  - [x] lookup_client_by_phone
+  - [x] get_client_tasks
+  - [x] get_task_status
+  - [x] get_client_history
+  - [x] log_call
+  - [x] search_context
+- [x] Test MCP server with sample data (test client created: +14695551234)
+- [x] Create integration documentation for Telnyx AI Assistant
+- [x] MCP server ready at /home/ubuntu/quintapoo-memory/mcp-server-standalone.mjs
+- [ ] Save checkpoint
