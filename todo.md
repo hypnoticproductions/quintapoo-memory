@@ -152,3 +152,21 @@
 - [x] Write Wukr Wire Friday newsletter (weekly recap format, 1,247 words)
 - [x] Save to /newsletters folder
 - [ ] Distribute to contact list (108 businesses)
+
+## MONDAY INTELLIGENCE GATHERING (JAN 26, 2026)
+- [x] Search Caribbean business news (past 48 hours)
+- [x] Search African business news (Uganda, Ghana focus)
+- [x] Search trade/infrastructure signals
+- [x] Search startup funding announcements
+- [x] Search policy/regulatory changes
+- [x] Identify top 5 signals with highest trade relevance
+- [x] Generate new article (1,500 words, ARM 0.88 prediction)
+- [x] Save intelligence report and article
+- [ ] Send article to Base 44
+
+## BASE 44 RETRY + MONDAY NEWSLETTER (JAN 26)
+- [ ] Retry sending article to Base 44 (handle timeout)
+- [ ] Create Monday newsletter from today's article
+- [ ] Save newsletter to /newsletters folder
+- [ ] Commit to GitHub
+- [ ] Distribute newsletter to contact list
