@@ -184,3 +184,13 @@
 - [x] Create integration documentation for Telnyx AI Assistant
 - [x] MCP server ready at /home/ubuntu/quintapoo-memory/mcp-server-standalone.mjs
 - [ ] Save checkpoint
+
+## MCP SERVER HTTP SSE ENDPOINT (JAN 27)
+- [x] Convert MCP server from stdio to HTTP SSE endpoint
+- [x] Add authentication middleware (validate QUINTAPOO_MCP_SECRET header)
+- [x] Implement SSE streaming for tool responses
+- [x] Create /api/mcp/sse endpoint in Express
+- [x] Test SSE connection with curl (tools endpoint working)
+- [x] Verify all 6 tools work via HTTP SSE (lookup_client_by_phone tested successfully)
+- [ ] Save checkpoint
+- [ ] Provide Telnyx configuration values
