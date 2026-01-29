@@ -194,3 +194,178 @@
 - [x] Verify all 6 tools work via HTTP SSE (lookup_client_by_phone tested successfully)
 - [ ] Save checkpoint
 - [ ] Provide Telnyx configuration values
+
+## ENGINE TWO ARCHITECTURE INTEGRATION (JAN 29, 2026)
+- [x] Analyze Engine Two complete architecture diagram
+- [x] Identify integration gaps (15 critical gaps found)
+- [x] Document system architecture analysis (ENGINE_TWO_ARCHITECTURE_ANALYSIS.md)
+- [x] Create system integration map (SYSTEM_INTEGRATION_MAP.md)
+- [ ] Save checkpoint
+
+### PHASE 1: REVENUE FOUNDATION (Week 1-2)
+#### Stripe Payment Integration
+- [ ] Run webdev_add_feature with feature="stripe"
+- [ ] Configure Stripe products:
+  - [ ] Harvester Beta ($9.99/$49.99)
+  - [ ] SafeTravel Tiers ($9.99/$49.99)
+  - [ ] WUKR Wire ($29/$999/$2500)
+- [ ] Build checkout flows for each product
+- [ ] Create payments table in database
+- [ ] Implement Stripe webhook handler
+- [ ] Test payment processing end-to-end
+
+#### Telnyx Phone System
+- [ ] Purchase Dallas phone number (+1-214-XXX-XXXX recommended)
+- [ ] Configure Telnyx AI Assistant with MCP server:
+  - [ ] Name: quintapoo-sally-mcp
+  - [ ] Type: SSE
+  - [ ] URL: https://3000-i6xyylpsiofyh4vmefvks-1bb073c2.us2.manus.computer/api/mcp/invoke
+  - [ ] Auth header: quintapoo: contancybearsfruit
+- [ ] Add Sally voice agent system prompt to Telnyx
+- [ ] Test phone call with test client (+14695551234)
+- [ ] Import real client data to MCP database
+
+#### Sally Lead Qualification Engine
+- [ ] Create leads table in database
+- [ ] Build lead qualification scoring logic (0-100 scale)
+- [ ] Create tRPC endpoints:
+  - [ ] leads.create
+  - [ ] leads.qualify
+  - [ ] leads.list
+  - [ ] leads.getAging
+- [ ] Build Sally decision engine (auto-qualify/disqualify)
+- [ ] Implement auto-task creation in Manus for qualified leads
+- [ ] Test qualification workflow end-to-end
+
+#### Client Dashboard (Transparency Layer)
+- [ ] Create client portal UI (new route: /client-portal)
+- [ ] Build task progress tracking component
+- [ ] Add roadmap visualization
+- [ ] Implement real-time status updates
+- [ ] Create changelog generation system
+- [ ] Add client authentication (separate from admin)
+- [ ] Test dashboard with sample client data
+
+### PHASE 2: OPERATIONAL AUTOMATION (Week 3-4)
+#### Calendar Integration
+- [ ] Set up Zapier account
+- [ ] Create Zapier workflows:
+  - [ ] Telnyx → GCal event creation
+  - [ ] GCal → Zoom link generation
+  - [ ] Webhook relay for schedule confirmations
+- [ ] Create schedules table in database
+- [ ] Build tRPC endpoints:
+  - [ ] schedules.create
+  - [ ] schedules.list
+  - [ ] schedules.cancel
+- [ ] Add Calendly as fallback option
+- [ ] Test meeting scheduling flow
+
+#### GitHub Actions Orchestrator
+- [ ] Create .github/workflows/orchestrator.yml
+- [ ] Add cron trigger (every 15 minutes)
+- [ ] Add PR trigger (on new lead/brief creation)
+- [ ] Add push trigger (on main branch updates)
+- [ ] Integrate Zapier webhooks
+- [ ] Test automated workflow routing
+
+#### File Storage System
+- [ ] Create folder structure:
+  - [ ] /leads/ (by month)
+  - [ ] /briefs/ (by client_id)
+  - [ ] /discovery/ (session notes)
+  - [ ] /content-ideas/ (Coco submissions)
+  - [ ] /schedules/ (calendar data)
+  - [ ] /transcripts/ (call recordings)
+  - [ ] /memory/ (persistent context)
+- [ ] Build file writing endpoints (tRPC)
+- [ ] Implement S3 storage for large files
+- [ ] Test file read/write operations
+
+#### Lead Tracking System
+- [ ] Build lead pipeline visualization
+- [ ] Implement aging alerts (leads >7 days without contact)
+- [ ] Create automated follow-up sequences
+- [ ] Add lead conversion tracking
+- [ ] Build lead analytics dashboard
+
+#### Progress Reports
+- [ ] Create progress_reports table
+- [ ] Build report generation logic (weekly, milestone, completion)
+- [ ] Implement automated email delivery
+- [ ] Add report templates (Markdown)
+- [ ] Test report generation + delivery
+
+### PHASE 3: SCALE & EXPANSION (Month 2)
+#### WhatsApp Business + Coco Agent
+- [ ] Set up WhatsApp Business API account
+- [ ] Integrate 11Labs voice transcription
+- [ ] Build Coco agent (QUALIFIER role)
+- [ ] Create PR creation system (leads, briefs, notes, ideas)
+- [ ] Test WhatsApp voice note → lead flow
+
+#### QR Code System
+- [ ] Build QR code generator endpoint
+- [ ] Create landing page with tracking
+- [ ] Integrate with Coco agent
+- [ ] Test QR code → lead capture flow
+
+#### Gima (Africa Voice Agent)
+- [ ] Research African voice providers (Twilio Africa, local carriers)
+- [ ] Purchase African phone number (Nigeria/Ghana/Uganda)
+- [ ] Build Gemini-powered multi-language agent
+- [ ] Integrate with Quintapoo Memory Repo
+- [ ] Test multi-language call handling
+
+#### Crypto Payments (Circle USDC)
+- [ ] Research Circle API documentation
+- [ ] Set up Circle account
+- [ ] Build USDC payment flow
+- [ ] Create Morphic Trade product setup
+- [ ] Implement Caribbean ↔ Africa payment corridor
+- [ ] Test crypto payment end-to-end
+
+#### Advanced Sensors
+- [ ] Build UVAF profiling system (Psych Layer)
+- [ ] Integrate OSINT collection (Criminal Intel)
+- [ ] Add SafeTravel geo alerts (Spatial/Geo)
+- [ ] Create notification engine for all sensor layers
+
+### SEGMENT PLUGS (Product-Specific Funnels)
+- [ ] Harvester Beta landing page + signup flow
+- [ ] SafeTravel landing page + signup flow
+- [ ] WUKR Wire landing page (already exists, needs signup form)
+- [ ] Morphic Consult landing page + booking flow
+
+### DATABASE SCHEMA ADDITIONS
+- [ ] Run pnpm db:push after adding new tables:
+  - [ ] leads
+  - [ ] briefs
+  - [ ] payments
+  - [ ] schedules
+  - [ ] progress_reports
+
+### ENVIRONMENT VARIABLES TO ADD
+- [ ] STRIPE_SECRET_KEY
+- [ ] STRIPE_WEBHOOK_SECRET
+- [ ] CIRCLE_API_KEY
+- [ ] WHATSAPP_API_KEY
+- [ ] TELNYX_API_KEY
+- [ ] TELNYX_PHONE_NUMBER
+- [ ] GOOGLE_CALENDAR_API_KEY
+- [ ] ZOOM_API_KEY
+- [ ] ZAPIER_WEBHOOK_URL
+
+### TESTING REQUIREMENTS
+- [ ] Write tests for lead qualification logic
+- [ ] Write tests for payment processing (Stripe + crypto)
+- [ ] Write tests for calendar scheduling workflows
+- [ ] Write tests for client dashboard data access
+- [ ] Write tests for file storage operations
+
+## IMMEDIATE NEXT ACTIONS (TODAY)
+1. [ ] Save checkpoint for Engine Two analysis
+2. [ ] Purchase Dallas phone number for Telnyx
+3. [ ] Configure Telnyx AI Assistant with MCP server
+4. [ ] Test phone call with Sally voice agent
+5. [ ] Add Stripe integration (webdev_add_feature)
