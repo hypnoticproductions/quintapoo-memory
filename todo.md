@@ -1069,3 +1069,61 @@
 3. User logs in to Twitter, LinkedIn, Substack (browser automation saves cookies)
 4. Test syndication: `node scripts/syndicate_multi_platform.mjs`
 5. Enable daily automation: Set `ENABLE_SYNDICATION=true`
+
+
+## SYNDICATION ACTIVATION & TESTING (JAN 30, 2026)
+- [ ] Create Hashnode account (https://hashnode.com)
+- [ ] Generate Hashnode API token (Settings → Developer)
+- [ ] Get Hashnode Publication ID
+- [ ] Create Dev.to account (https://dev.to)
+- [ ] Generate Dev.to API key (Settings → Extensions)
+- [ ] Log in to Twitter and save browser session
+- [ ] Log in to LinkedIn and save browser session
+- [ ] Log in to Substack and save browser session
+- [ ] Add API tokens to Manus secrets (HASHNODE_API_TOKEN, HASHNODE_PUBLICATION_ID, DEVTO_API_KEY)
+- [ ] Set ENABLE_SYNDICATION=true in environment
+- [ ] Send test article to Base 44 for processing
+- [ ] Wait for Base 44 to process and return enriched content
+- [ ] Run syndication script: `node scripts/syndicate_multi_platform.mjs`
+- [ ] Verify Substack post created
+- [ ] Verify Twitter post created
+- [ ] Verify LinkedIn post created
+- [ ] Verify Hashnode post created
+- [ ] Verify Dev.to post created
+- [ ] Capture all URLs and store in database
+- [ ] Save checkpoint
+
+
+## SUBSTACK + TWITTER DAILY POSTING STRATEGY (JAN 30, 2026)
+- [x] Analyze Caribbean tourism CSV leads (320 total: Saint Lucia 133, St. Vincent 19, Grenada 10, Dominica 39, Barbados 20, WUKR Wire 99)
+- [x] Create 6 Caribbean tourism-focused posts (targeting 320 leads)
+- [x] Set up 3x daily posting schedule (9 AM, 1 PM, 6 PM AST) - scheduled task created
+- [x] Create Claude Desktop posting scripts (login + post)
+- [x] Create README for Claude Desktop execution
+- [ ] Run claude_desktop_login.mjs via Claude Desktop (one-time setup)
+- [ ] Test posting workflow via Claude Desktop
+- [ ] Save checkpoint
+
+**Files Created:**
+- `content/daily_posts_caribbean_tourism.md` - 6 posts (Substack + Twitter versions)
+- `scripts/claude_desktop_login.mjs` - One-time login setup (Substack + Twitter)
+- `scripts/claude_desktop_post.mjs` - Daily posting script
+- `README_CLAUDE_DESKTOP.md` - Execution guide
+
+**Scheduled Task:**
+- Name: `caribbean_tourism_daily_posts`
+- Schedule: 3x daily (9 AM, 1 PM, 6 PM AST)
+- Rotation: Post 1-2 (9 AM), Post 3-4 (1 PM), Post 5-6 (6 PM)
+
+**Next Steps:**
+1. Run `node scripts/claude_desktop_login.mjs` via Claude Desktop
+2. Log in to Substack + Twitter via Google OAuth
+3. Run `node scripts/claude_desktop_post.mjs` to test posting
+4. Upload session files to Manus for cloud automation (optional)
+
+**Strategy:**
+- **Target Audience:** 220 Caribbean tourism businesses (hotels, resorts, tour operators)
+- **Content Focus:** AI voice agents, language barriers, tourism automation, Caribbean market insights
+- **Posting Schedule:** 6 posts/day (2 posts at 9 AM, 2 at 1 PM, 2 at 6 PM)
+- **Platforms:** Substack (long-form) + Twitter (short-form threads)
+- **Content Source:** WUKR Wire intelligence + Base 44 processed content
