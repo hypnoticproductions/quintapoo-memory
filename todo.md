@@ -890,3 +890,43 @@
 - [ ] Test email forwarding (send to richard@dopa.buzz)
 - [ ] Expand to Dominica (target: 20+ businesses)
 - [ ] Expand to Barbados tourism (target: 50+ businesses)
+
+
+## PRODUCTION DEPLOYMENT & CARIBBEAN EXPANSION (JAN 30, 2026 - 2:30 PM AST)
+- [x] Publish Quintapoo to production via Manus UI
+- [x] Get production URL (https://quintamem-zypxoyni.manus.space)
+- [x] Configure Resend webhook with production URL (user completed manually)
+- [ ] Add MX records to dopa.buzz DNS (user needs to enable "Receiving" in Resend)
+- [ ] Test email forwarding (send to richard@dopa.buzz, verify Gmail delivery)
+- [x] Scrape Dominica tourism businesses (39 businesses)
+- [x] Import Dominica leads to database (39 imported)
+- [x] Send Dominica emails via Resend (39 sent, 100% delivery)
+- [x] Scrape Barbados tourism businesses (20 businesses)
+- [x] Import Barbados leads to database (20 imported)
+- [x] Send Barbados emails via Resend (20 sent, 100% delivery)
+- [x] Verify all reply-to headers work correctly (richard.fproductions@gmail.com)
+- [ ] Save final checkpoint
+
+### FINAL EASTERN CARIBBEAN CAMPAIGN RESULTS (JAN 30, 2026)
+**Total Emails Sent: 220**
+- Saint Lucia: 133 emails (100% delivery)
+- St. Vincent: 19 emails (100% delivery)
+- Grenada: 10 emails (100% delivery)
+- Dominica: 39 emails (100% delivery)
+- Barbados: 20 emails (100% delivery)
+
+**All emails include reply_to: richard.fproductions@gmail.com**
+**Resend inbound webhook configured at production URL**
+**Resend inbound webhook skill created: /home/ubuntu/skills/resend-inbound-webhook/SKILL.md**
+
+### CRITICAL: Email Forwarding Setup (User Action Required)
+**Status:** Webhook configured, but "Enable Receiving" is DISABLED in Resend dashboard
+
+**User must:**
+1. Go to https://resend.com/domains
+2. Click on dopa.buzz domain
+3. Toggle "Enable Receiving" to ON
+4. Add MX records to DNS provider (Resend will show records after enabling)
+5. Test forwarding by sending email to richard@dopa.buzz
+
+**Without this, emails to richard@dopa.buzz will bounce. Reply-to workaround already works.**
