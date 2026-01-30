@@ -369,3 +369,114 @@
 3. [ ] Configure Telnyx AI Assistant with MCP server
 4. [ ] Test phone call with Sally voice agent
 5. [ ] Add Stripe integration (webdev_add_feature)
+
+## DAILY AUTOMATION SCHEDULE (JAN 29, 2026)
+- [x] Analyze operational rhythm from DIAGRAM 3
+- [x] Identify 15 unscheduled daily/weekly tasks
+- [x] Create DAILY_AUTOMATION_SCHEDULE.md with implementation plan
+- [x] Create 6 scheduled tasks (3 daily, 3 weekly)
+- [x] Build DailyChecklist component for dashboard
+- [x] Integrate checklist into Home.tsx
+- [ ] Save checkpoint
+
+### PHASE 1: CRITICAL DAILY AUTOMATION (Week 1)
+#### Morning Intelligence Gathering (6 AM AST)
+- [x] Create scheduled task with cron: `0 0 6 * * *`
+- [ ] Build Wukr Wire scraper (YouTube, Twitter, news sources)
+- [ ] Implement signal ranking algorithm (trade relevance scoring)
+- [ ] Create intelligence report generator
+- [ ] Save reports to /intelligence/ folder
+- [ ] Log signals to Operational Hub (Google Sheets API)
+
+#### Midday CRM Sync (12 PM AST)
+- [x] Create scheduled task with cron: `0 0 12 * * *`
+- [ ] Build call logs → CRM sync function
+- [ ] Implement lead pipeline aging calculator
+- [ ] Create aging alert system (leads >7 days)
+- [ ] Generate midday status report
+- [ ] Send alerts via email/notification
+
+#### Evening Lead Follow-Up (6 PM AST)
+- [x] Create scheduled task with cron: `0 0 18 * * *`
+- [ ] Build automated email sequence generator
+- [ ] Implement lead status updater
+- [ ] Create follow-up attempt logger
+- [ ] Generate evening pipeline report
+- [ ] Track response rates
+
+### PHASE 2: WEEKLY AUTOMATION (Week 2)
+#### Monday Content Launch (8 AM Monday)
+- [x] Create scheduled task with cron: `0 0 8 * * 1`
+- [ ] Build weekend intelligence review system
+- [ ] Implement Monday article generator
+- [ ] Create newsletter generator
+- [ ] Auto-send to Base 44
+- [ ] Prepare syndication queue
+
+#### Tuesday Social Media Engagement (9 AM Tuesday)
+- [ ] Create scheduled task with cron: `0 0 9 * * 2`
+- [ ] Build LinkedIn auto-poster
+- [ ] Build Twitter auto-poster
+- [ ] Implement engagement tracker (target business posts)
+- [ ] Create DM sequence sender
+- [ ] Track engagement metrics
+
+#### Wednesday Video Generation (10 AM Wednesday)
+- [ ] Create scheduled task with cron: `0 0 10 * * 3`
+- [ ] Integrate HeyGen API for video creation
+- [ ] Build Market Signals video script generator
+- [ ] Implement YouTube uploader
+- [ ] Create social media syndication system
+
+#### Thursday Partnership Outreach (9 AM Thursday)
+- [ ] Create scheduled task with cron: `0 0 9 * * 4`
+- [ ] Build partnership pipeline reviewer
+- [ ] Implement proposal sender (auto-select qualified leads)
+- [ ] Create follow-up tracker
+- [ ] Update CRM with partnership status
+
+#### Friday Newsletter Distribution (8 AM Friday)
+- [x] Create scheduled task with cron: `0 0 8 * * 5`
+- [ ] Build weekly newsletter generator
+- [ ] Integrate with custom emailer app (108 contacts)
+- [ ] Auto-post to Substack
+- [ ] Implement community engagement (Reddit, Medium comments)
+
+#### Monday Evening Network Monitoring (6 PM Monday)
+- [x] Create scheduled task with cron: `0 0 18 * * 1`
+- [ ] Build social media scanner (Caribbean business activity)
+- [ ] Implement target business post monitor (108 contacts)
+- [ ] Create engagement metrics tracker
+- [ ] Generate weekly prep report
+
+### PHASE 3: MONTHLY AUTOMATION (Week 3-4)
+#### Monthly Performance Report (9 AM 1st of month)
+- [ ] Create scheduled task with cron: `0 0 9 1 * *`
+- [ ] Build analytics report generator
+- [ ] Implement partnership conversion rate calculator
+- [ ] Create content performance analyzer
+- [ ] Generate next month strategy recommendations
+
+### DASHBOARD CHECKLIST WIDGET
+- [x] Create DailyChecklist component
+- [x] Implement checklist state management (localStorage)
+- [x] Add manual check/uncheck functionality
+- [ ] Auto-check items when scheduled tasks complete (future: webhook integration)
+- [x] Reset daily checklist at midnight AST
+- [x] Reset weekly checklist at Monday 12 AM AST
+- [x] Add visual progress indicators
+- [x] Integrate with dashboard Home.tsx
+
+### TESTING & MONITORING
+- [ ] Test all daily tasks for 7 days
+- [ ] Monitor task completion rates
+- [ ] Track automation success/failure rates
+- [ ] Adjust timing based on performance
+- [ ] Build automation dashboard with task status
+- [ ] Add manual override controls for all scheduled tasks
+
+## IMMEDIATE NEXT ACTIONS (TODAY)
+1. [ ] Create 3 critical daily scheduled tasks (6 AM, 12 PM, 6 PM)
+2. [ ] Build daily checklist widget in dashboard
+3. [ ] Test morning intelligence gathering automation
+4. [ ] Save checkpoint for daily automation system

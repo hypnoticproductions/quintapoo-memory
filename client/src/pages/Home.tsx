@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, FileText, Globe, Lock, Server, Terminal, Zap, Radio } from "lucide-react";
 import { Base44ControlPanel } from "@/components/Base44ControlPanel";
 import NetworkMonitor from "@/components/NetworkMonitor";
+import { DailyChecklist } from "@/components/DailyChecklist";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -106,6 +107,11 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
+        </section>
+
+        {/* Daily Checklist Section */}
+        <section>
+          <DailyChecklist />
         </section>
 
         {/* Main Operational Dashboard */}
