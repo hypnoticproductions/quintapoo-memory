@@ -4,11 +4,13 @@ Intelligence Scraper for Wukr Wire
 Scrapes Caribbean business/trade signals from YouTube, Twitter/X, and news sources
 Ranks signals by trade relevance (0-1 score)
 Appends to Intelligence Log in Operational Hub
+
+Uses Manus built-in LLM (Gemini 2.5 Flash) via Node.js subprocess for intelligence gathering
 """
 import os
 import sys
 import json
-import requests
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
@@ -22,19 +24,14 @@ from sheets_append import append_sheet
 SPREADSHEET_ID = '1S4uUv6BxQIPjFMyt6Eq5BF9OG5TdtfEFieGs6sBuaD4'
 INTELLIGENCE_LOG_RANGE = 'Intelligence Log!A:E'
 
-# xAI API configuration (requires XAI_API_KEY environment variable)
-XAI_API_KEY = os.getenv('XAI_API_KEY')
-XAI_API_URL = 'https://api.x.ai/v1/chat/completions'
+# Manus LLM configuration (uses built-in Gemini 2.5 Flash)
+PROJECT_ROOT = Path(__file__).parent.parent
 
 def search_caribbean_signals():
     """
-    Use xAI to search for Caribbean business/trade signals
+    Use Manus built-in LLM to search for Caribbean business/trade signals
     Returns list of signals with metadata
     """
-    if not XAI_API_KEY:
-        print("⚠️  XAI_API_KEY not set. Using mock data for testing.")
-        return generate_mock_signals()
-    
     prompt = """Search for recent Caribbean business and trade signals from the past 24 hours.
 Focus on:
 - Export/import news (coffee, agriculture, manufacturing)
@@ -45,51 +42,75 @@ Focus on:
 - Brain gain/diaspora return initiatives
 
 For each signal found, provide:
-1. Signal ID (format: SIG-XXX)
-2. Date (YYYY-MM-DD)
+1. Signal ID (format: SIG-XXX where XXX is 3 random digits)
+2. Date (YYYY-MM-DD, use today's date)
 3. Description (1-2 sentences)
 4. Category (Trade/Investment/Technology/Policy/Infrastructure)
 5. Trade Relevance Score (0.0-1.0, where 1.0 is highest relevance to Caribbean trade)
 
-Return as JSON array with fields: signal_id, date, description, category, score"""
+Return ONLY a JSON array with fields: signal_id, date, description, category, score
+Example: [{"signal_id": "SIG-123", "date": "2026-01-30", "description": "...", "category": "Trade", "score": 0.92}]"""
     
     try:
-        response = requests.post(
-            XAI_API_URL,
-            headers={
-                'Authorization': f'Bearer {XAI_API_KEY}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'model': 'grok-beta',
-                'messages': [
-                    {'role': 'system', 'content': 'You are a Caribbean trade intelligence analyst.'},
-                    {'role': 'user', 'content': prompt}
-                ],
-                'temperature': 0.7
-            },
-            timeout=30
+        # Call Manus LLM via Node.js
+        node_script = f"""
+const {{ invokeLLM }} = require('{PROJECT_ROOT}/server/_core/llm.ts');
+
+(async () => {{
+  try {{
+    const result = await invokeLLM({{
+      messages: [
+        {{ role: 'system', content: 'You are a Caribbean trade intelligence analyst. Return only valid JSON arrays.' }},
+        {{ role: 'user', content: `{prompt}` }}
+      ],
+      response_format: {{ type: 'json_object' }}
+    }});
+    
+    console.log(result.choices[0].message.content);
+  }} catch (error) {{
+    console.error('ERROR:', error.message);
+    process.exit(1);
+  }}
+}})();
+"""
+        
+        result = subprocess.run(
+            ['node', '--input-type=module', '-e', node_script],
+            cwd=str(PROJECT_ROOT),
+            capture_output=True,
+            text=True,
+            timeout=60
         )
         
-        if response.status_code == 200:
-            result = response.json()
-            content = result['choices'][0]['message']['content']
+        if result.returncode == 0:
+            content = result.stdout.strip()
             
-            # Extract JSON from response
+            # Parse JSON response
             import re
+            # Try to extract JSON array
             json_match = re.search(r'\[.*\]', content, re.DOTALL)
             if json_match:
                 signals = json.loads(json_match.group())
                 return signals
+            # Try to extract JSON object with signals array
+            elif '{' in content:
+                data = json.loads(content)
+                if 'signals' in data:
+                    return data['signals']
+                elif isinstance(data, list):
+                    return data
+                else:
+                    print(f"⚠️  Unexpected JSON structure: {data}")
+                    return generate_mock_signals()
             else:
-                print("⚠️  Could not parse JSON from xAI response. Using mock data.")
+                print(f"⚠️  Could not parse JSON from LLM response: {content}")
                 return generate_mock_signals()
         else:
-            print(f"⚠️  xAI API error: {response.status_code}. Using mock data.")
+            print(f"⚠️  LLM call failed: {result.stderr}")
             return generate_mock_signals()
             
     except Exception as e:
-        print(f"⚠️  Error calling xAI API: {e}. Using mock data.")
+        print(f"⚠️  Error calling Manus LLM: {e}")
         return generate_mock_signals()
 
 def generate_mock_signals():

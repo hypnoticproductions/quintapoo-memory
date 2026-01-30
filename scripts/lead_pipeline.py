@@ -192,6 +192,12 @@ def main():
         print("\n✅ No leads require follow-up at this time.")
         return
     
+    # Limit to 5 emails per run to avoid SMTP throttling
+    batch_size = 5
+    total_leads = len(aging_leads)
+    aging_leads = aging_leads[:batch_size]
+    print(f"Processing batch of {len(aging_leads)} leads (max {batch_size} per run, {total_leads} total)")
+    
     # Step 2: Generate and send follow-up emails
     print("\n[2/3] Generating and sending follow-up emails...")
     sent_count = 0
