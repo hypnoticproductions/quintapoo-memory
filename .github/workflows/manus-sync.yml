@@ -1,0 +1,18 @@
+name: Manus Sync
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Log sync trigger
+        run: echo "Manus sync at $(date)"
+      # Add webhook notification here if needed
