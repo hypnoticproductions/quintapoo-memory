@@ -475,8 +475,19 @@
 - [ ] Build automation dashboard with task status
 - [ ] Add manual override controls for all scheduled tasks
 
+## EMAIL CREDENTIALS SETUP (JAN 30, 2026)
+- [x] Request email credentials via webdev_request_secrets
+- [x] Add email environment variables to ENV (EMAIL_HOST, EMAIL_PORT, EMAIL_USER, EMAIL_PASSWORD, EMAIL_FROM_NAME)
+- [x] Install nodemailer package
+- [x] Create email service (server/email.ts) with sendEmail and testEmailConnection functions
+- [x] Write email credential tests (2/2 passing)
+- [x] Verify SMTP connection successful
+- [x] Send test email successful
+- [ ] Save checkpoint
+
 ## IMMEDIATE NEXT ACTIONS (TODAY)
-1. [ ] Create 3 critical daily scheduled tasks (6 AM, 12 PM, 6 PM)
-2. [ ] Build daily checklist widget in dashboard
+1. [x] Create 3 critical daily scheduled tasks (6 AM, 12 PM, 6 PM)
+2. [x] Build daily checklist widget in dashboard
 3. [ ] Test morning intelligence gathering automation
-4. [ ] Save checkpoint for daily automation system
+4. [x] Save checkpoint for daily automation system
+5. [x] Set up email credentials for automated sending
