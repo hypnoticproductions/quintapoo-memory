@@ -744,3 +744,21 @@
 - [ ] Set up pilot program tracking dashboard
 - [ ] Create Calendly link for demo calls
 - [ ] Monitor www.dopa.buzz traffic from Saint Lucia IPs
+
+
+## RESEND API BULK EMAIL DELIVERY (JAN 30, 2026 - 10:00 AM AST)
+- [x] Add RESEND_API_KEY to environment variables
+- [x] Install Resend Node.js SDK (npm package: resend)
+- [x] Create Resend email delivery script (send_saint_lucia_resend.mjs)
+- [x] Update email template for Resend format
+- [x] Update from address to richard@dopa.buzz (verified domain)
+- [x] Send 80 remaining Saint Lucia tour operator emails (80/80 sent successfully)
+- [ ] Monitor Resend dashboard for delivery status (https://resend.com/emails)
+- [ ] Track bounce rate, open rate, click rate
+- [ ] Save checkpoint
+
+### Resend Configuration
+**API Key**: re_U9wH8VaJ_13SeUZKeKZXCe3GX5p3AmjQs
+**From Email**: richard.fproductions@gmail.com (must be verified in Resend)
+**Batch Size**: 80 emails (remaining contacts from saint_lucia_tourism source)
+**Rate Limit**: Resend allows 100 emails/hour on free tier, 10,000/day on paid tier
