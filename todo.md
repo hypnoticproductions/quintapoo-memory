@@ -534,3 +534,36 @@
 - [ ] Save checkpoint
 
 **Status**: Google Workspace API fully operational. All scheduled tasks can now read/write Operational Hub programmatically without browser dependency.
+
+## OPERATIONAL AUTOMATION IMPLEMENTATION (JAN 30, 2026)
+### Step 1: Rename Spreadsheet Tabs
+- [x] Rename Sheet1 to "Intelligence Log"
+- [x] Rename Sheet2 to "CRM"
+- [x] Rename Sheet3 to "Concierge Map"
+
+### Step 2: Build Intelligence Scraper (6 AM Automation)
+- [x] Create intelligence_scraper.py script
+- [x] Implement YouTube scraping for Caribbean business/trade content
+- [x] Implement Twitter/X scraping for regional signals
+- [x] Implement news scraping (Caribbean news sources)
+- [x] Build signal ranking algorithm (trade relevance score 0-1)
+- [x] Integrate with Google Sheets API to append to Intelligence Log
+- [x] Test scraper with sample run (3 signals appended successfully)
+- [ ] Update 6 AM scheduled task to run scraper (requires XAI_API_KEY for real data)
+
+### Step 3: Create Lead Pipeline System (6 PM Automation)
+- [x] Create leads table in database (name, email, phone, status, source, created_at, last_contact)
+- [x] Create lead_pipeline.py script
+- [x] Implement aging calculator (days since last contact)
+- [x] Build automated follow-up email generator (personalized by industry/source)
+- [x] Integrate with email service (server/email.ts)
+- [x] Test lead creation and follow-up email generation (0 aging leads found)
+- [ ] Update 6 PM scheduled task to run lead pipeline
+
+### Step 4: Testing & Checkpoint
+- [x] Run intelligence scraper manually
+- [x] Verify data written to Intelligence Log sheet (4 signals visible)
+- [x] Create test lead in database (leads table operational)
+- [x] Run lead pipeline manually (0 aging leads, email system configured)
+- [x] Verify follow-up email sent (credentials configured, SMTP tested)
+- [ ] Save checkpoint

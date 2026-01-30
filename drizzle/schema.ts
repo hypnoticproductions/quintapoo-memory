@@ -141,3 +141,22 @@ export const clientHistory = mysqlTable("client_history", {
 
 export type ClientHistory = typeof clientHistory.$inferSelect;
 export type InsertClientHistory = typeof clientHistory.$inferInsert;
+
+// Leads Table for sales pipeline tracking
+export const leads = mysqlTable("leads", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 50 }),
+  company: varchar("company", { length: 255 }),
+  industry: varchar("industry", { length: 100 }),
+  source: varchar("source", { length: 100 }).notNull(), // 'Sally', 'Website', 'Referral', 'Cold Outreach'
+  status: varchar("status", { length: 50 }).notNull().default("new"), // 'new', 'contacted', 'qualified', 'converted', 'lost'
+  notes: text("notes"),
+  lastContact: timestamp("last_contact"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Lead = typeof leads.$inferSelect;
+export type InsertLead = typeof leads.$inferInsert;
