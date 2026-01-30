@@ -675,3 +675,72 @@
 - [x] Create EXTENDED_OPERATION_REPORT.md (comprehensive 300+ line report)
 - [x] Update todo.md with completion status
 - [ ] Report final results to user
+
+
+## SAINT LUCIA TOUR OPERATOR OUTREACH CAMPAIGN (JAN 30, 2026 - 8:40 AM AST)
+### Phase 1: Craft Email Pitch
+- [ ] Write compelling subject line (multi-language voice agents for tour guides)
+- [ ] Draft email body highlighting DOPA-TECH services
+- [ ] Emphasize Saint Lucian-built by hospitality industry veteran
+- [ ] Include Sally WUKR demo link (www.dopa.buzz)
+- [ ] List all DOPA-TECH services (Harvester, SafeTravel, WUKR Wire, Voice Agents)
+- [ ] Add clear call-to-action (demo booking, consultation)
+
+### Phase 2: Scrape 100+ Saint Lucia Businesses
+- [ ] Search for Saint Lucia tour operators
+- [ ] Search for Saint Lucia hotels with tour services
+- [ ] Search for Saint Lucia excursion companies
+- [ ] Search for Saint Lucia water sports operators
+- [ ] Search for Saint Lucia cultural tour guides
+- [ ] Extract business names, emails, phone numbers, websites
+- [ ] Target: 100+ contacts minimum
+
+### Phase 3: Import & Send Initial Outreach
+- [ ] Create CSV with all scraped contacts
+- [ ] Import to leads table (source: "saint_lucia_tourism")
+- [ ] Send initial batch (5 emails) for testing
+- [ ] Monitor delivery and response rates
+- [ ] Schedule follow-up sequence (3 days, 7 days, 14 days)
+
+### Phase 4: Save Checkpoint
+- [ ] Update todo.md with completion status
+- [ ] Save checkpoint with campaign materials
+- [ ] Document scraping methodology
+
+### Phase 5: Report Results
+- [ ] Report total contacts found
+- [ ] Report emails sent
+- [ ] Provide campaign analytics dashboard
+
+
+## SAINT LUCIA TOUR OPERATOR OUTREACH CAMPAIGN (JAN 30, 2026 - 9:15 AM AST)
+- [x] Craft tour operator pitch email (Version 1: Direct Value Prop)
+- [x] Scrape 132 Saint Lucia tourism businesses (tour operators + hotels)
+- [x] Extract contact information (102 with emails, 116 total imported)
+- [x] Import to leads table with source "saint_lucia_tourism"
+- [x] Send initial test batch (5 emails sent successfully)
+- [ ] Monitor email responses and reply rate
+- [ ] Send remaining 111 emails in batches of 10/day
+- [ ] Track pilot program signups (target: 5 free pilots)
+- [ ] Save checkpoint
+
+### Campaign Details
+**Target**: 116 Saint Lucia tour operators and hotels
+**Email Subject**: "Saint Lucian-Built AI Voice Agent for Your Tour Guides 🇱🇨"
+**Value Prop**: Multi-language voice agent (Sally WUKR) for tour guides—20+ languages, offline capable
+**Call to Action**: Test demo at www.dopa.buzz, reply for free 30-day pilot program
+**Test Batch**: 5 emails sent (100% delivery rate)
+**Recipients**: 758 Uber Excursions, Amazona Tours, Angels Tours, Aquarius Waterworld, A-Touring Services
+
+### Follow-Up Strategy
+1. **Day 3**: Send follow-up to non-responders (Curiosity variant email)
+2. **Day 7**: Send final follow-up (Aggressive variant: "Last chance for free pilot")
+3. **Day 14**: Move non-responders to "cold" status, focus on engaged leads
+4. **Ongoing**: Daily monitoring of pilot program signups, schedule demo calls
+
+### Next Steps
+- [ ] Create 4 additional email variants (Curiosity, Aggressive, Humble, Social Proof)
+- [ ] Build automated follow-up sequence (Day 3, Day 7, Day 14)
+- [ ] Set up pilot program tracking dashboard
+- [ ] Create Calendly link for demo calls
+- [ ] Monitor www.dopa.buzz traffic from Saint Lucia IPs
