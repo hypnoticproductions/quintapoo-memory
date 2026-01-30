@@ -295,6 +295,73 @@ export const appRouter = router({
         return { success: true, message: "Webhook received" };
       }),
   }),
+
+  // Email Inbound Webhook (Resend)
+  email: router({
+    // Inbound webhook from Resend for richard@dopa.buzz
+    inbound: publicProcedure
+      .input(z.object({
+        type: z.literal("email.received"),
+        created_at: z.string(),
+        data: z.object({
+          email_id: z.string(),
+          created_at: z.string(),
+          from: z.string(),
+          to: z.array(z.string()),
+          subject: z.string(),
+          message_id: z.string(),
+          attachments: z.array(z.object({
+            id: z.string(),
+            filename: z.string(),
+            content_type: z.string(),
+            content_disposition: z.string(),
+            content_id: z.string().optional(),
+          })).optional(),
+        }),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        // Log webhook to database
+        const db = await getDb();
+        if (db) {
+          await db.insert(webhookLogs).values({
+            source: "resend_inbound",
+            event: "email.received",
+            payload: JSON.stringify(input),
+            response: JSON.stringify({ success: true }),
+            statusCode: 200,
+            success: 1,
+            receivedAt: new Date(),
+            createdAt: new Date(),
+          });
+        }
+        
+        console.log(`[Resend Inbound] Email received from ${input.data.from} to ${input.data.to[0]}`);
+        console.log(`Subject: ${input.data.subject}`);
+        
+        // Forward email using Resend SDK
+        try {
+          const { Resend } = await import('resend');
+          const resend = new Resend(process.env.RESEND_API_KEY);
+          
+          const { data, error } = await resend.emails.receiving.forward({
+            emailId: input.data.email_id,
+            to: 'richard.fproductions@gmail.com',
+            from: 'richard@dopa.buzz', // Must be verified sending address
+          });
+          
+          if (error) {
+            throw new Error(JSON.stringify(error));
+          }
+          
+          console.log(`[Resend Inbound] Email forwarded successfully. ID: ${data.id}`);
+          
+          return { success: true, message: "Email received and forwarded", forwardId: data.id };
+        } catch (err: any) {
+          console.error(`[Resend Inbound] Failed to forward email:`, err);
+          return { success: false, error: err.message };
+        }
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

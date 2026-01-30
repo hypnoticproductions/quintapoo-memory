@@ -802,3 +802,91 @@
 - [x] Exceeded 100/day Resend limit but all delivered successfully
 - [x] All Saint Lucia tourism/business targets contacted
 - [ ] Save checkpoint
+
+
+## EMAIL INFRASTRUCTURE FIXES (JAN 30, 2026 - 1:45 PM AST)
+**CRITICAL**: Emails sent to richard@dopa.buzz currently bounce (no inbox configured)
+
+### Phase 1: Immediate Fix - Reply-To Header
+- [ ] Update send_saint_lucia_resend.mjs with reply_to: "richard.fproductions@gmail.com"
+- [ ] Update all email scripts to include reply_to header
+- [ ] Test email with reply-to (send to test address, verify reply goes to Gmail)
+- [ ] Verify all future emails use reply-to
+
+### Phase 2: Resend Inbound Email Forwarding
+- [ ] Create inbound webhook endpoint at /api/trpc/email.inbound
+- [ ] Implement webhook authentication (X-Resend-Signature validation)
+- [ ] Parse inbound email payload (from, to, subject, body)
+- [ ] Forward email to richard.fproductions@gmail.com via Gmail SMTP
+- [ ] Log all inbound emails to database (email_logs table)
+- [ ] Test forwarding flow end-to-end
+
+### Phase 3: Configure Resend Domain for Inbound
+- [ ] Log into Resend dashboard (https://resend.com)
+- [ ] Navigate to Domains → dopa.buzz → Inbound
+- [ ] Enable inbound email reception
+- [ ] Add MX records to DNS (if required)
+- [ ] Configure webhook URL (Quintapoo Memory Repo endpoint)
+- [ ] Test inbound email: send to richard@dopa.buzz, verify forwarding
+
+### Phase 4: Email Customization Skill for Non-Hospitality
+- [ ] Create skill: /home/ubuntu/skills/email-customization/SKILL.md
+- [ ] Define industry-specific email templates (retail, finance, manufacturing, etc.)
+- [ ] Build template selection logic (detect business type from scraping)
+- [ ] Integrate with lead_pipeline.py and bulk email scripts
+- [ ] Test with sample non-hospitality businesses
+
+### Success Metrics
+- [ ] All emails include reply_to: richard.fproductions@gmail.com
+- [ ] Inbound webhook operational (test email received and forwarded)
+- [ ] Email customization skill created and tested
+- [ ] Save checkpoint with all fixes
+
+
+## ST. VINCENT & GRENADA TOURISM OUTREACH (JAN 30, 2026 - 2:00 PM AST)
+- [x] Build Resend inbound webhook skill (/home/ubuntu/skills/resend-inbound-webhook/SKILL.md)
+- [x] Update webhook endpoint to use Resend SDK forward() method
+- [x] Add reply_to header to all email scripts (richard.fproductions@gmail.com)
+- [x] Scrape St. Vincent tour operators (12 businesses)
+- [x] Scrape St. Vincent hotels (10 businesses)
+- [x] Import 19 St. Vincent leads to database
+- [x] Send 19 St. Vincent emails via Resend (100% delivery rate)
+- [x] Scrape Grenada tour operators and hotels (10 businesses)
+- [x] Import 10 Grenada leads to database
+- [x] Send 10 Grenada emails via Resend (100% delivery rate)
+- [ ] Save checkpoint
+
+### Campaign Results Summary
+**St. Vincent:**
+- 22 businesses scraped (tour operators + hotels)
+- 19 leads imported (3 duplicates/no email)
+- 19 emails sent (100% delivery)
+- Source: st_vincent_tourism
+
+**Grenada:**
+- 10 businesses scraped (tour operators + hotels + resorts)
+- 10 leads imported
+- 10 emails sent (100% delivery)
+- Source: grenada_tourism
+
+**Total Eastern Caribbean Outreach:**
+- Saint Lucia: 133 emails (previous)
+- St. Vincent: 19 emails
+- Grenada: 10 emails
+- **Grand Total: 162 emails sent today**
+
+### Resend Inbound Webhook Skill
+- Location: /home/ubuntu/skills/resend-inbound-webhook/SKILL.md
+- Production-ready deployment guide included
+- Uses Resend SDK native forward() method
+- Supports Manus hosting + Vercel deployment
+- MX records configuration documented
+- Webhook signature verification (optional)
+
+### Next Steps
+- [ ] Deploy to production (Manus or Vercel)
+- [ ] Configure Resend webhook with production URL
+- [ ] Add MX records to dopa.buzz DNS
+- [ ] Test email forwarding (send to richard@dopa.buzz)
+- [ ] Expand to Dominica (target: 20+ businesses)
+- [ ] Expand to Barbados tourism (target: 50+ businesses)

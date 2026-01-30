@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /**
- * Send Saint Lucia tour operator emails via Resend API
- * Batch size: 80 emails (remaining contacts)
+ * Send St. Vincent tourism emails via Resend API
  */
 
 import { Resend } from 'resend';
@@ -39,7 +38,7 @@ function generateEmailHTML(businessName) {
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
     h2 { color: #1a1a1a; }
-    .highlight { background-color: #f0f9ff; padding: 15px; border-left: 4px solid: #0ea5e9; margin: 20px 0; }
+    .highlight { background-color: #f0f9ff; padding: 15px; border-left: 4px solid #0ea5e9; margin: 20px 0; }
     .cta { background-color: #0ea5e9; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin: 20px 0; }
     .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280; }
   </style>
@@ -56,14 +55,14 @@ function generateEmailHTML(businessName) {
   <div class="highlight">
     <ul>
       <li><strong>Translate tour commentary</strong> in 20+ languages (Mandarin, French, Spanish, German, Italian, Portuguese, Japanese, Korean, Russian, Arabic, and more)</li>
-      <li><strong>Answer guest questions</strong> about Saint Lucia history, culture, attractions, safety</li>
+      <li><strong>Answer guest questions</strong> about St. Vincent history, culture, attractions, safety</li>
       <li><strong>Handle booking inquiries</strong> 24/7 (even when your office is closed)</li>
       <li><strong>Provide personalized recommendations</strong> based on guest preferences</li>
       <li><strong>Work offline</strong> (no internet required for core features)</li>
     </ul>
   </div>
   
-  <h3>Why This Matters for Saint Lucia Tourism</h3>
+  <h3>Why This Matters for St. Vincent Tourism</h3>
   <ul>
     <li><strong>Chinese tourists</strong> are the fastest-growing segment in Caribbean tourism—but language barriers kill bookings</li>
     <li><strong>European guests</strong> (French, German, Italian) expect multilingual service</li>
@@ -72,12 +71,12 @@ function generateEmailHTML(businessName) {
   </ul>
   
   <h3>Test It Yourself (Right Now)</h3>
-  <p>Visit <strong>www.dopa.buzz</strong> and try Sally WUKR. Ask her about Saint Lucia attractions in any language. See how she responds. Then imagine this voice agent supporting your tour guides in the field.</p>
+  <p>Visit <strong>www.dopa.buzz</strong> and try Sally WUKR. Ask her about St. Vincent attractions in any language. See how she responds. Then imagine this voice agent supporting your tour guides in the field.</p>
   
   <a href="https://www.dopa.buzz" class="cta">Try Sally WUKR Demo →</a>
   
-  <h3>Built in Saint Lucia, For Saint Lucia</h3>
-  <p>I'm not some Silicon Valley tech bro. I worked in hospitality here in Saint Lucia. I saw the language barriers. I built this solution specifically for us—for Caribbean tour operators who want to compete globally without losing our local authenticity.</p>
+  <h3>Built in Saint Lucia, For the Caribbean</h3>
+  <p>I'm not some Silicon Valley tech bro. I worked in hospitality here in the Caribbean. I saw the language barriers. I built this solution specifically for us—for Caribbean tour operators who want to compete globally without losing our local authenticity.</p>
   
   <h3>DOPA-TECH Services (Beyond Voice Agents)</h3>
   <ol>
@@ -88,7 +87,7 @@ function generateEmailHTML(businessName) {
   </ol>
   
   <h3>Let's Talk</h3>
-  <p>I'm offering <strong>5 free pilot programs</strong> to Saint Lucia tour operators this month. No credit card. No commitment. Just test Sally WUKR with your team for 30 days and see if it increases bookings.</p>
+  <p>I'm offering <strong>5 free pilot programs</strong> to St. Vincent tour operators this month. No credit card. No commitment. Just test Sally WUKR with your team for 30 days and see if it increases bookings.</p>
   
   <p><strong>Email</strong>: richard.fproductions@gmail.com<br>
   <strong>Website</strong>: www.dopa.buzz</p>
@@ -111,16 +110,16 @@ async function main() {
   // Connect to database
   const connection = await mysql.createConnection(dbConfig);
   
-  // Fetch 100 remaining Saint Lucia leads (tour operators + Chamber members)
+  // Fetch St. Vincent leads
   const [leads] = await connection.execute(
     `SELECT id, name, email, company, phone
      FROM leads
-     WHERE (source = 'saint_lucia_tourism' OR source = 'Saint Lucia Chamber of Commerce')
+     WHERE source = 'st_vincent_tourism'
      AND status = 'new'
      LIMIT 100`
   );
   
-  console.log(`Found ${leads.length} leads to email via Resend`);
+  console.log(`Found ${leads.length} St. Vincent leads to email via Resend`);
   
   let sent = 0;
   let failed = 0;
@@ -153,8 +152,7 @@ async function main() {
       sent++;
       console.log(`✅ Sent to: ${lead.name} (${lead.email}) - ID: ${data.id}`);
       
-      // Rate limiting: 100 emails/hour = 1 email every 36 seconds
-      // Adding 1 second delay to be safe
+      // Rate limiting: 1 second delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
     } catch (err) {
@@ -164,7 +162,7 @@ async function main() {
   }
   
   console.log(`\n${'='.repeat(60)}`);
-  console.log(`✅ Campaign complete!`);
+  console.log(`✅ St. Vincent campaign complete!`);
   console.log(`${'='.repeat(60)}`);
   console.log(`Emails sent: ${sent}`);
   console.log(`Emails failed: ${failed}`);
