@@ -29,7 +29,7 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 EMAIL_USER = os.getenv('EMAIL_USER')
-EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_PASSWORD = os.getenv('GMAIL_APP_PASSWORD') or os.getenv('EMAIL_PASSWORD')  # Prefer App Password
 EMAIL_FROM_NAME = os.getenv('EMAIL_FROM_NAME', 'DOPA-TECH')
 
 def get_db_connection():

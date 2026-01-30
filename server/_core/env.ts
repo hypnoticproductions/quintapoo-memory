@@ -10,6 +10,6 @@ export const ENV = {
   emailHost: process.env.EMAIL_HOST ?? "",
   emailPort: process.env.EMAIL_PORT ?? "587",
   emailUser: process.env.EMAIL_USER ?? "",
-  emailPassword: process.env.EMAIL_PASSWORD ?? "",
+  emailPassword: process.env.GMAIL_APP_PASSWORD ?? process.env.EMAIL_PASSWORD ?? "",
   emailFromName: process.env.EMAIL_FROM_NAME ?? "",
 };

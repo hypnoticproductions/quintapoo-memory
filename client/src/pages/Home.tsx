@@ -8,6 +8,7 @@ import { Activity, AlertTriangle, ArrowRight, CheckCircle2, Clock, Database, Fil
 import { Base44ControlPanel } from "@/components/Base44ControlPanel";
 import NetworkMonitor from "@/components/NetworkMonitor";
 import { DailyChecklist } from "@/components/DailyChecklist";
+import { AutomationMonitor } from "@/components/AutomationMonitor";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -112,6 +113,11 @@ export default function Home() {
         {/* Daily Checklist Section */}
         <section>
           <DailyChecklist />
+        </section>
+
+        {/* Automation Monitor Section */}
+        <section>
+          <AutomationMonitor />
         </section>
 
         {/* Main Operational Dashboard */}

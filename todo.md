@@ -635,3 +635,43 @@
 **Blockers**:
 - SMTP "Connection unexpectedly closed" errors prevent email delivery
 - Recommend switching to SendGrid/Mailgun or generating Gmail App Password
+
+
+## EXTENDED AUTONOMOUS OPERATION (7:51 AM - 10:00 AM AST)
+### Phase 1: Fix SMTP Email Delivery (CRITICAL)
+- [x] Research Gmail App Password generation
+- [x] Test SMTP connection with App Password (spaces preserved: `ogts pgqy qimq kriv`)
+- [x] Fix EMAIL_PORT from 465 (SSL) to 587 (TLS/STARTTLS)
+- [x] Run lead_pipeline.py with 5-email test batch (5/5 sent successfully)
+- [ ] Verify email delivery to inbox (check richard.fproductions@gmail.com)
+- [x] Document successful email configuration (EMAIL_SETUP_GUIDE.md)
+
+### Phase 2: Build Automation Monitoring Dashboard
+- [x] Create AutomationMonitor component for dashboard
+- [x] Add last run timestamps for 3 daily tasks
+- [x] Add success/failure status indicators (success/failed/running/pending)
+- [x] Add manual trigger buttons for each automation
+- [x] Display metrics (signals collected, leads contacted, CRM rows synced)
+- [x] Integrate with Home.tsx dashboard
+
+### Phase 3: Update Scheduled Task Prompts
+- [x] Update 6 AM task prompt with intelligence_scraper_v2.py path
+- [x] Update 12 PM task prompt with crm_sync.py path
+- [x] Update 6 PM task prompt with lead_pipeline.py path
+- [x] Add error handling instructions to prompts (email notifications on failure)
+- [x] Test manual execution of all 3 tasks (all passing)
+
+### Phase 4: Expand Intelligence Sources (DEFERRED)
+- [ ] Add YouTube API integration for Caribbean business channels (requires YouTube Data API key)
+- [ ] Add Twitter/X scraping for trade hashtags (requires Twitter API v2 credentials)
+- [ ] Implement signal deduplication logic (hash-based or fuzzy matching)
+- [ ] Increase daily signal target (4 → 10+)
+- [ ] Test expanded scraper with live data
+
+**Status**: Deferred to next session. Current scraper operational with news sources. YouTube/Twitter expansion requires API credentials.
+
+### Phase 5: Final Checkpoint & Report
+- [ ] Save checkpoint with all completed work
+- [x] Create EXTENDED_OPERATION_REPORT.md (comprehensive 300+ line report)
+- [x] Update todo.md with completion status
+- [ ] Report final results to user
