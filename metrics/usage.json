@@ -1,0 +1,9 @@
+{
+  "period": "2026-01",
+  "grok_calls": 0,
+  "claude_tokens": 0,
+  "github_calls": 0,
+  "eleven_labs_chars": 0,
+  "estimated_cost": 0.00,
+  "last_updated": "2026-01-30T00:00:00Z"
+}
