@@ -977,3 +977,29 @@
 2. Test script: `cd /home/ubuntu/quintapoo-memory && node scripts/base44_to_substack.mjs`
 3. Verify article posted to Substack and URL captured in database
 4. Enable multi-platform syndication by setting `ENABLE_SYNDICATION=true`
+
+
+## TWITTER POSTING SKILL DEVELOPMENT (JAN 30, 2026)
+- [x] Research Twitter API v2 posting methods (POST /2/tweets endpoint)
+- [x] Create Twitter posting skill with API + browser automation fallback
+- [ ] Test Twitter posting workflow (requires Twitter Developer Account + Bearer Token)
+- [ ] Integrate with multi-platform syndication script
+- [ ] Save checkpoint
+
+**Skill Location:** `/home/ubuntu/skills/twitter-posting/SKILL.md`
+
+**Key Features:**
+- Twitter API v2 integration (primary method)
+- Browser automation fallback (Playwright)
+- Thread posting support
+- Media upload support
+- Hybrid approach (API → browser fallback)
+- Rate limit handling
+- 280 character formatting
+
+**Next Steps:**
+1. Get Twitter Developer Account (https://developer.x.com)
+2. Generate Bearer Token
+3. Add to Manus secrets: `TWITTER_BEARER_TOKEN`
+4. Test API posting
+5. Integrate with `base44_to_substack.mjs` syndication script
