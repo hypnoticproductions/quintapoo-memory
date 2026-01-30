@@ -111,13 +111,13 @@ async function main() {
   // Connect to database
   const connection = await mysql.createConnection(dbConfig);
   
-  // Fetch 80 remaining Saint Lucia tour operators
+  // Fetch 100 remaining Saint Lucia leads (tour operators + Chamber members)
   const [leads] = await connection.execute(
     `SELECT id, name, email, company, phone
      FROM leads
-     WHERE source = 'saint_lucia_tourism'
+     WHERE (source = 'saint_lucia_tourism' OR source = 'Saint Lucia Chamber of Commerce')
      AND status = 'new'
-     LIMIT 80`
+     LIMIT 100`
   );
   
   console.log(`Found ${leads.length} leads to email via Resend`);
