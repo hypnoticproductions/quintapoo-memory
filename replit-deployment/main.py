@@ -119,7 +119,8 @@ async def process_voice(
 
 def convert_to_wav(input_path: str) -> str:
     """Convert audio to WAV format using ffmpeg"""
-    wav_path = input_path.rsplit(".", 1)[0] + ".wav"
+    # Use unique output filename to avoid overwriting input
+    wav_path = input_path.rsplit(".", 1)[0] + "_converted.wav"
     
     result = subprocess.run([
         "ffmpeg", "-i", input_path,
