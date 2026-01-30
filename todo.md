@@ -930,3 +930,21 @@
 5. Test forwarding by sending email to richard@dopa.buzz
 
 **Without this, emails to richard@dopa.buzz will bounce. Reply-to workaround already works.**
+
+
+## SUBSTACK POSTING SKILL DEVELOPMENT (JAN 30, 2026)
+- [x] Research Substack API and posting methods (no official posting API exists)
+- [x] Create Substack posting skill with browser automation
+- [x] Document full posting workflow with error handling
+- [x] Integrate with content syndication workflow (Google Docs → Substack → cross-post)
+- [ ] Save checkpoint
+
+**Skill Location:** `/home/ubuntu/skills/substack-posting/SKILL.md`
+
+**Key Findings:**
+- Substack has NO official posting API (only read-only profile API)
+- Browser automation is the ONLY reliable posting method
+- Skill includes full workflow: login → fill editor → publish → capture URL
+- Integrated with WUKR Wire daily dispatch (7 AM AST)
+- Supports draft/publish modes, scheduling, images, links
+- Error handling for session expiration, UI changes, network issues
