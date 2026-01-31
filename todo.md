@@ -1154,3 +1154,18 @@
 - [ ] Test evening_thought_leadership task
 - [ ] Enable automated scheduling
 - [ ] Monitor first week of automated posting
+
+## VOXTOUR + PELICAN TOURS COLLABORATION (JAN 31, 2026)
+- [x] Research Amy Stephen and Pelican Tours background
+- [x] Research Community Tourism Agency (CTA) funding model
+- [x] Write strategic article positioning VoxTour collaboration (2,247 words, ARM 0.93 prediction)
+- [ ] Publish article to WUKR Wire newsletter (320 contacts)
+- [ ] Publish article to Substack
+- [ ] Publish article to LinkedIn (tag Amy Stephen, Dahlia Guard, CTA)
+- [ ] Publish article to Twitter (7-tweet thread)
+- [ ] Monitor engagement for 48 hours
+- [ ] Direct outreach to Amy Stephen (personalized email + VOXTOUR85 code)
+- [ ] Direct outreach to Dahlia Guard (CTA institutional partnership pitch)
+- [ ] Add Amy Stephen + Pelican Tours to leads database
+- [ ] Track response rates and adjust messaging
+- [ ] Build Day 3, 7, 14 follow-up sequences
