@@ -1,0 +1,27 @@
+{
+  "llm": {
+    "provider": "kimi",
+    "model": "kimi-2.5",
+    "api_key_env": "KIMI_API_KEY",
+    "context_window": 1000000,
+    "temperature": 0.7
+  },
+  "database": {
+    "type": "mysql",
+    "host_env": "DATABASE_HOST",
+    "port": 4000,
+    "user_env": "DATABASE_USER",
+    "password_env": "DATABASE_PASSWORD",
+    "database": "quintapoo_memory"
+  },
+  "browser": {
+    "headless": false,
+    "session_dir": "/home/ubuntu/quintapoo-memory/.moltbot/sessions",
+    "timeout": 30000
+  },
+  "logging": {
+    "level": "info",
+    "file": "/home/ubuntu/quintapoo-memory/logs/moltbot.log"
+  },
+  "timezone": "America/Halifax"
+}

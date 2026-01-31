@@ -1127,3 +1127,30 @@
 - **Posting Schedule:** 6 posts/day (2 posts at 9 AM, 2 at 1 PM, 2 at 6 PM)
 - **Platforms:** Substack (long-form) + Twitter (short-form threads)
 - **Content Source:** WUKR Wire intelligence + Base 44 processed content
+
+
+## MOLTBOT + KIMI 2.5 CONFIGURATION (JAN 31, 2026)
+- [ ] Create Moltbot configuration files (moltbot_config.json, moltbot_tasks.json)
+- [ ] Create Playwright posting scripts (post_to_substack.mjs, post_to_twitter.mjs)
+- [ ] Create deployment guide (MOLTBOT_DEPLOYMENT_GUIDE.md)
+- [ ] Test Moltbot task execution
+- [ ] Save checkpoint
+
+**Goal**: Replace Goose with Moltbot + Kimi 2.5 for 3x daily Substack/Twitter posting (9 AM, 1 PM, 6 PM AST).
+**Advantages**: 30x cheaper, simpler architecture, 5x larger context window, native cron integration.
+
+## MOLTBOT + KIMI 2.5 SOCIAL MEDIA AUTOMATION (JAN 31, 2026)
+- [x] Research Moltbot vs Goose for automated posting
+- [x] Create Playwright scripts for Substack posting (post_to_substack.mjs)
+- [x] Create Playwright scripts for Twitter posting (post_to_twitter.mjs)
+- [x] Create Moltbot deployment guide (MOLTBOT_DEPLOYMENT_GUIDE.md)
+- [x] Document 3x daily posting schedule (9 AM, 1 PM, 6 PM AST)
+- [ ] Install Moltbot on local machine
+- [ ] Configure Kimi API key
+- [ ] Run manual login scripts (save browser sessions)
+- [ ] Load Moltbot tasks configuration
+- [ ] Test morning_intelligence_drop task
+- [ ] Test midday_engagement task
+- [ ] Test evening_thought_leadership task
+- [ ] Enable automated scheduling
+- [ ] Monitor first week of automated posting

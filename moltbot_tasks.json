@@ -1,0 +1,127 @@
+{
+  "tasks": {
+    "morning_intelligence_drop": {
+      "schedule": "0 9 * * *",
+      "timezone": "America/Halifax",
+      "description": "Generate and post morning intelligence content to Substack + Twitter",
+      "steps": [
+        {
+          "action": "query_database",
+          "query": "SELECT * FROM processed_content WHERE created_at >= NOW() - INTERVAL 1 DAY ORDER BY created_at DESC LIMIT 1",
+          "output_var": "base44_content"
+        },
+        {
+          "action": "generate_content",
+          "prompt": "You are WUKY, Synthetic Co-Founder of DOPA-TECH. Generate a Substack post (800-1200 words) based on this Base 44 processed content: {{base44_content}}. Tone: Brutalist, data-driven, high-status, urgent. No hedging. Caribbean-first perspective. Target audience: 320 Caribbean tourism businesses we've contacted. Format: Title (10 words max), Subtitle (20 words max), Body (800-1200 words with data, insights, CTA).",
+          "output_var": "substack_post"
+        },
+        {
+          "action": "execute_script",
+          "script": "/home/ubuntu/quintapoo-memory/scripts/post_to_substack.mjs",
+          "args": ["{{substack_post.title}}", "{{substack_post.subtitle}}", "{{substack_post.body}}"],
+          "output_var": "substack_url"
+        },
+        {
+          "action": "generate_content",
+          "prompt": "Convert this Substack post into a Twitter thread (6 tweets, 280 chars each). Tweet 1: Hook + headline. Tweet 2-5: Key insights with data. Tweet 6: CTA + link to Substack. Tone: WUKY (brutalist, no hedging). Format: Return as JSON array of strings. Substack post: {{substack_post}}",
+          "output_var": "twitter_thread"
+        },
+        {
+          "action": "execute_script",
+          "script": "/home/ubuntu/quintapoo-memory/scripts/post_to_twitter.mjs",
+          "args": ["{{twitter_thread}}"],
+          "output_var": "twitter_urls"
+        },
+        {
+          "action": "log_results",
+          "data": {
+            "task": "morning_intelligence_drop",
+            "substack_url": "{{substack_url}}",
+            "twitter_urls": "{{twitter_urls}}",
+            "timestamp": "{{now}}"
+          }
+        }
+      ]
+    },
+    "midday_engagement": {
+      "schedule": "0 13 * * *",
+      "timezone": "America/Halifax",
+      "description": "Generate and post midday data-driven Twitter thread",
+      "steps": [
+        {
+          "action": "query_database",
+          "query": "SELECT island, COUNT(*) as count, AVG(engagement_score) as avg_engagement FROM leads WHERE created_at >= NOW() - INTERVAL 7 DAY GROUP BY island",
+          "output_var": "lead_analytics"
+        },
+        {
+          "action": "generate_content",
+          "prompt": "You are WUKY. Generate a Twitter thread (5 tweets, 280 chars each) based on this lead analytics data: {{lead_analytics}}. Expose AI adoption gaps in Caribbean tourism. Tone: Brutalist, data-driven, high-status. Tweet 1: Hook with shocking stat. Tweet 2-4: Island-specific insights. Tweet 5: CTA (DOPA-TECH solution). Format: Return as JSON array of strings.",
+          "output_var": "twitter_thread"
+        },
+        {
+          "action": "execute_script",
+          "script": "/home/ubuntu/quintapoo-memory/scripts/post_to_twitter.mjs",
+          "args": ["{{twitter_thread}}"],
+          "output_var": "twitter_urls"
+        },
+        {
+          "action": "log_results",
+          "data": {
+            "task": "midday_engagement",
+            "twitter_urls": "{{twitter_urls}}",
+            "timestamp": "{{now}}"
+          }
+        }
+      ]
+    },
+    "evening_thought_leadership": {
+      "schedule": "0 18 * * *",
+      "timezone": "America/Halifax",
+      "description": "Generate and post evening thought leadership to Substack + Twitter",
+      "steps": [
+        {
+          "action": "read_file",
+          "path": "/home/ubuntu/quintapoo-memory/content/daily_posts_caribbean_tourism.md",
+          "output_var": "content_buffer"
+        },
+        {
+          "action": "select_next_post",
+          "content": "{{content_buffer}}",
+          "rotation_state_file": "/home/ubuntu/quintapoo-memory/.moltbot/post_rotation.json",
+          "output_var": "selected_post"
+        },
+        {
+          "action": "generate_content",
+          "prompt": "You are WUKY. Expand this post outline into a full Substack article (800-1200 words). Tone: Brutalist, data-driven, high-status, urgent. Add Caribbean-specific data and examples. Format: Title, Subtitle, Body. Post outline: {{selected_post}}",
+          "output_var": "substack_post"
+        },
+        {
+          "action": "execute_script",
+          "script": "/home/ubuntu/quintapoo-memory/scripts/post_to_substack.mjs",
+          "args": ["{{substack_post.title}}", "{{substack_post.subtitle}}", "{{substack_post.body}}"],
+          "output_var": "substack_url"
+        },
+        {
+          "action": "generate_content",
+          "prompt": "Convert this Substack post into a Twitter thread (7 tweets, 280 chars each). Tweet 1: Hook. Tweet 2-6: Key insights. Tweet 7: CTA + Substack link. Tone: WUKY (brutalist). Format: JSON array of strings. Post: {{substack_post}}",
+          "output_var": "twitter_thread"
+        },
+        {
+          "action": "execute_script",
+          "script": "/home/ubuntu/quintapoo-memory/scripts/post_to_twitter.mjs",
+          "args": ["{{twitter_thread}}"],
+          "output_var": "twitter_urls"
+        },
+        {
+          "action": "log_results",
+          "data": {
+            "task": "evening_thought_leadership",
+            "substack_url": "{{substack_url}}",
+            "twitter_urls": "{{twitter_urls}}",
+            "timestamp": "{{now}}"
+          }
+        }
+      ]
+    }
+  }
+}
